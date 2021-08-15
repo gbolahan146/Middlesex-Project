@@ -1,0 +1,1064 @@
+@startuml
+set namespaceSeparator ::
+
+class "asthma_management::core::providers::providers.dart::AmProviders" {
+  {static} +List<SingleChildWidget*>* providers
+}
+
+class "asthma_management::core::models::medication.dart::Medication" {
+  +String* medication
+  +int* id
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::rescue.dart::Rescue" {
+  +String* title
+  +int* id
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::diary_log_model.dart::DiaryLog" {
+  +String* title
+  +String* time
+  +String* date
+  +String* trigger
+  +String* symptoms
+  +String* description
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::reminder.dart::Reminder" {
+  +String* takeMeds
+  +String* timeRem
+  +String* repeat
+  +String* notes
+  +int* remId
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::userModel.dart::User" {
+  +String* gender
+  +String* height
+  +String* peakflow
+  +String* image
+  +String* birthdate
+  +String* country
+  +String* ageDiagnosed
+  +String* triggers
+  +String* contacts
+  +String* symptoms
+  +String* age
+  +String* fullname
+  +String* username
+  +int* id
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::peak.dart::Peak" {
+  +String* day
+  +int* value
+  +int* id
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::diary.dart::Diary" {
+  +String* dayQuestion
+  +String* triggerQuestion
+  +String* symptomsQuestion
+  +String* dateHappened
+  +String* time
+  +String* moreText
+  +int* id
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::models::emergency_contact.dart::EmergencyContactsModel" {
+  +String* emergencyName
+  +String* emergencyNumber
+  +String* emergencyRelation
+  +Map<String*, dynamic>* toJson()
+}
+
+class "asthma_management::core::routes::route_names.dart::RouteNames" {
+  {static} +String* home
+  {static} +String* login
+  {static} +String* signup
+  {static} +String* splashScreen
+  {static} +String* medicationScreen
+  {static} +String* profile1
+  {static} +String* profile2
+  {static} +String* bottomBar
+  {static} +String* homepage
+  {static} +String* add_rescue
+  {static} +String* add_ctrl
+  {static} +String* diary
+  {static} +String* diarylog
+  {static} +String* welcomeScreen
+  {static} +String* reminder
+  {static} +String* peakflow
+  {static} +String* addpeak
+  {static} +String* test
+  {static} +Map<String*, Widget* Function(BuildContext*)*>* routes
+}
+
+class "asthma_management::core::routes::route_generator.dart::RouteGenerator" {
+  {static} +Route<dynamic>* generateRoute()
+  {static} -Route<dynamic>* _errorRoute()
+}
+
+class "asthma_management::core::services::snackbarService.dart::SnackBarService" {
+  {static} +SnackBarService* instance
+  +BuildContext* buildContext
+  +void showSnackBarError()
+  +void showSnackBarSuccess()
+}
+
+"asthma_management::core::services::snackbarService.dart::SnackBarService" o-- "asthma_management::core::services::snackbarService.dart::SnackBarService"
+"asthma_management::core::services::snackbarService.dart::SnackBarService" o-- "flutter::src::widgets::framework.dart::BuildContext"
+
+class "asthma_management::core::services::validators.dart::EmailValidator" {
+  {static} +String* validate()
+}
+
+class "asthma_management::core::services::validators.dart::UsernameValidator" {
+  {static} +String* validate()
+}
+
+class "asthma_management::core::services::validators.dart::PasswordValidator" {
+  {static} +String* validate()
+}
+
+class "asthma_management::core::services::statefulWrapper.dart::StatefulWrapper" {
+  +Function* onInit
+  +Widget* child
+  +_StatefulWrapperState* createState()
+}
+
+"asthma_management::core::services::statefulWrapper.dart::StatefulWrapper" o-- "flutter::src::widgets::framework.dart::Widget"
+
+class "asthma_management::core::services::statefulWrapper.dart::_StatefulWrapperState" {
+  +void initState()
+  +Widget* build()
+}
+
+class "asthma_management::core::services::responsiveness.dart::McGyver" {
+  +McGyver* mcGyver
+  {static} -double* _fixedWidth
+  {static} -double* _fixedHeight
+  {static} -bool* _isFullScreenApp
+  {static} +void hideSoftKeyboard()
+  {static} +double* roundToDecimals()
+  {static} +Orientation* setScaleRatioBasedOnDeviceOrientation()
+  {static} +int* rsIntW()
+  {static} +int* rsIntH()
+  {static} +double* rsDoubleW()
+  {static} +double* rsDoubleH()
+  {static} +Widget* rsWidget()
+  {static} +Widget* rsWidgetW()
+  {static} +double* textSize()
+}
+
+"asthma_management::core::services::responsiveness.dart::McGyver" o-- "asthma_management::core::services::responsiveness.dart::McGyver"
+
+class "asthma_management::core::services::db.dart::DB" {
+  {static} -DB* _dbHelper
+  {static} -Database* _db
+  +String* tblUsers
+  +String* gender
+  +String* height
+  +String* peakflow
+  +String* birthdate
+  +String* country
+  +String* ageDiagnosed
+  +String* triggers
+  +String* contacts
+  +String* symptoms
+  +String* age
+  +String* username
+  +String* fullname
+  +String* image
+  +String* userID
+  +String* tblDiary
+  +String* colPid
+  +String* dayQuestion
+  +String* triggerQuestion
+  +String* symptomsQuestion
+  +String* dateHappened
+  +String* time
+  +String* moreText
+  +String* tblEmergencyContacts
+  +String* emergencyName
+  +String* emergencyRelation
+  +String* emergencyNumber
+  +String* tblPeak
+  +String* peakId
+  +String* day
+  +String* value
+  +String* tblMedication
+  +String* medication
+  +String* medID
+  +String* tblRescue
+  +String* rescue
+  +String* resId
+  +String* tblRem
+  +String* remId
+  +String* timeRem
+  +String* repeat
+  +String* notes
+  +String* takeMeds
+  +String* tblDiaryLogs
+  +String* logTitle
+  +String* logTime
+  +String* logDate
+  +String* logTriggers
+  +String* logDescription
+  +String* logSymptoms
+  +Future<Database*>* db
+  +Future<Database*>* initializeDb()
+  -void _createDb()
+  +Future<int*>* insertUser()
+  +Future<List<dynamic>*>* getUser()
+  +Future<int*>* insertDiary()
+  +Future<int*>* insertEmergencyContacts()
+  +Future<int*>* deleteEmergencyContacts()
+  +Future<List<dynamic>*>* getEmergencyContacts()
+  +Future<List<dynamic>*>* getDiary()
+  +Future<int*>* insertReminder()
+  +Future<List<dynamic>*>* getReminders()
+  +Future<int*>* deleteReminders()
+  +Future<int*>* insertPeak()
+  +Future<List<dynamic>*>* getPeak()
+  +Future<int*>* insertMedication()
+  +Future<List<dynamic>*>* getMedication()
+  +Future<int*>* deleteMedication()
+  +Future<int*>* insertRescue()
+  +Future<int*>* deleteRescue()
+  +Future<int*>* insertDiaryLog()
+  +Future<List<dynamic>*>* getDiaryLog()
+  +Future<int*>* deleteDiarylog()
+  +Future<List<dynamic>*>* getRescue()
+  +Future<int*>* updateUser()
+  +Future<int*>* updateDiary()
+}
+
+"asthma_management::core::services::db.dart::DB" o-- "asthma_management::core::services::db.dart::DB"
+"asthma_management::core::services::db.dart::DB" o-- "sqflite_common::sqlite_api.dart::Database"
+
+class "asthma_management::main.dart::MyApp" {
+  +Widget* build()
+}
+
+class "asthma_management::views::firstAid::firstaid.dart::FirstAid" {
+  +Widget* build()
+}
+
+class "asthma_management::views::firstAid::firstAidModel.dart::FirstAidViewModel" {
+  -bool* _emergency
+  -bool* _first
+  -bool* _second
+  -bool* _third
+  -bool* _fourth
+  +bool* fourth
+  +bool* third
+  +bool* second
+  +bool* first
+  +bool* emergency
+  +void setEmergency()
+  +void setFirst()
+  +void setSecond()
+  +void setThird()
+  +void setFourth()
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "asthma_management::views::firstAid::firstAidModel.dart::FirstAidViewModel"
+
+class "asthma_management::views::home::homeViewModel.dart::HomeViewModel" {
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "asthma_management::views::home::homeViewModel.dart::HomeViewModel"
+
+class "asthma_management::views::home::homeView.dart::Home" {
+  +Widget* build()
+}
+
+class "asthma_management::views::home::homeView.dart::HomeViewDesktop" {
+  +Widget* build()
+}
+
+class "asthma_management::views::home::homeView.dart::HomeViewMobile" {
+  +Widget* build()
+}
+
+class "asthma_management::views::home::homeView.dart::HomeViewTablet" {
+  +Widget* build()
+}
+
+class "asthma_management::views::add_ctrl_med::add_ctrl.dart::AddCtrlScreen" {
+  +_AddCtrlScreenState* createState()
+}
+
+class "asthma_management::views::add_ctrl_med::add_ctrl.dart::_AddCtrlScreenState" {
+  -TextEditingController* _textController
+  +GlobalKey<FormState*>* formKey
+  +void initState()
+  +Widget* build()
+  -void _showDialog()
+}
+
+"asthma_management::views::add_ctrl_med::add_ctrl.dart::_AddCtrlScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::add_ctrl_med::add_ctrl.dart::_AddCtrlScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::actionPlan::actionPlan.dart::ActionPlan" {
+  +Widget* build()
+}
+
+class "asthma_management::views::actionPlan::actionPlanViewModel.dart::ActionPlanViewModel" {
+  -bool* _greenButton
+  -bool* _yellowButton
+  -bool* _redButton
+  -List<bool*>* _zones
+  +bool* greenButton
+  +bool* yellowButton
+  +bool* redButton
+  +List<bool*>* zones
+  +void setGreenButton()
+  +void setYellowButton()
+  +void setRedButton()
+  +void setRedZone()
+  +void setYellowZone()
+  +void setGreenZone()
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "asthma_management::views::actionPlan::actionPlanViewModel.dart::ActionPlanViewModel"
+
+class "asthma_management::views::homepage::homepage.dart::HomeScreen" {
+  +Widget* build()
+}
+
+class "asthma_management::views::homepage::homepage.dart::MyCards" {
+  +String* heading
+  +String* image
+  +Color* color
+  +Function* tap
+  +Widget* build()
+}
+
+"asthma_management::views::homepage::homepage.dart::MyCards" o-- "dart::ui::Color"
+
+class "asthma_management::views::homepage::homePageViewModel.dart::HomePageViewModel" {
+  -String* _name
+  -String* _image
+  -String* _greetings
+  +String* name
+  +String* image
+  +String* greetings
+  +Future<void>* getName()
+  +Future<void>* getImage()
+  +void greeting()
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "asthma_management::views::homepage::homePageViewModel.dart::HomePageViewModel"
+
+class "asthma_management::views::homepage::test_chart.dart::TestChartSeries" {
+  +Map<DateTime*, double*>* createLineData()
+  +Map<DateTime*, double*>* createLineAlmostSaveValues()
+  +Map<DateTime*, double*>* createLine1()
+  +Map<DateTime*, double*>* createLine2()
+  +Map<DateTime*, double*>* createLine2_2()
+  +Map<DateTime*, double*>* createLine3()
+}
+
+class "asthma_management::views::medication_screen::medication_screen.dart::MedicationScreen" {
+  +Widget* build()
+}
+
+class "asthma_management::views::signup::signupView.dart::SignUp" {
+  +Widget* build()
+}
+
+class "asthma_management::views::signup::signupView.dart::SignupViewDesktop" {
+  +SignupViewModel* viewModel
+  +_SignupViewDesktopState* createState()
+}
+
+"asthma_management::views::signup::signupView.dart::SignupViewDesktop" o-- "asthma_management::views::signup::signupViewModel.dart::SignupViewModel"
+
+class "asthma_management::views::signup::signupView.dart::_SignupViewDesktopState" {
+  +GlobalKey<FormState*>* formKey
+  +Widget* build()
+}
+
+"asthma_management::views::signup::signupView.dart::_SignupViewDesktopState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::signup::signupView.dart::SignupViewMobile" {
+  +SignupViewModel* viewModel
+  +_SignupViewMobileState* createState()
+}
+
+"asthma_management::views::signup::signupView.dart::SignupViewMobile" o-- "asthma_management::views::signup::signupViewModel.dart::SignupViewModel"
+
+class "asthma_management::views::signup::signupView.dart::_SignupViewMobileState" {
+  +GlobalKey<FormState*>* formKey
+  +Widget* build()
+}
+
+"asthma_management::views::signup::signupView.dart::_SignupViewMobileState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::signup::signupView.dart::SignupViewTablet" {
+  +SignupViewModel* viewModel
+  +_SignupViewTabletState* createState()
+}
+
+"asthma_management::views::signup::signupView.dart::SignupViewTablet" o-- "asthma_management::views::signup::signupViewModel.dart::SignupViewModel"
+
+class "asthma_management::views::signup::signupView.dart::_SignupViewTabletState" {
+  +GlobalKey<FormState*>* formKey
+  +Widget* build()
+}
+
+"asthma_management::views::signup::signupView.dart::_SignupViewTabletState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::signup::signupViewModel.dart::ButtonState" {
+  +int* index
+  {static} +List<ButtonState*>* values
+  {static} +ButtonState* Idle
+  {static} +ButtonState* Pressed
+}
+
+"asthma_management::views::signup::signupViewModel.dart::ButtonState" o-- "asthma_management::views::signup::signupViewModel.dart::ButtonState"
+
+class "asthma_management::views::signup::signupViewModel.dart::SignupViewModel" {
+  -ButtonState* _buttonState
+  +ButtonState* buttonState
+  +void setState()
+  +Future<String*>* signup()
+}
+
+"asthma_management::views::signup::signupViewModel.dart::SignupViewModel" o-- "asthma_management::views::signup::signupViewModel.dart::ButtonState"
+
+class "asthma_management::views::add_rescue_med::add_rescue.dart::AddRescueScreen" {
+  +_AddRescueScreenState* createState()
+}
+
+class "asthma_management::views::add_rescue_med::add_rescue.dart::_AddRescueScreenState" {
+  -TextEditingController* _textController
+  +GlobalKey<FormState*>* formKey
+  +void initState()
+  +Widget* build()
+  -void _showDialog()
+}
+
+"asthma_management::views::add_rescue_med::add_rescue.dart::_AddRescueScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::add_rescue_med::add_rescue.dart::_AddRescueScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::addpeakflow::addPeak.dart::AddPeakFlow" {
+  +_AddPeakFlowState* createState()
+}
+
+class "asthma_management::views::addpeakflow::addPeak.dart::_AddPeakFlowState" {
+  +TextEditingController* textFieldController
+  +bool* shiftEnabled
+  +bool* isNumericMode
+  +String* text
+  +dynamic formatDate()
+  +Widget* build()
+  -dynamic _onKeyPress()
+  -void _sendDataBack()
+}
+
+"asthma_management::views::addpeakflow::addPeak.dart::_AddPeakFlowState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "asthma_management::views::chart::charts.dart::LineChartSample1" {
+  +_LineChartSample1State* createState()
+}
+
+class "asthma_management::views::chart::charts.dart::_LineChartSample1State" {
+  +List<Color*>* gradientColors
+  +bool* showAvg
+  +List<bool*>* buttons
+  +Widget* build()
+  +LineChartData* mainData()
+}
+
+class "asthma_management::views::profile2::profile2View.dart::Profile2" {
+  +String* country
+  +DateTime* dob
+  +String* gender
+  +String* imagePath
+  +Widget* build()
+}
+
+class "asthma_management::views::profile2::profile2View.dart::Profile2ViewDesktop" {
+  +Profile2ViewModel* viewModel
+  +String* country
+  +DateTime* dob
+  +String* gender
+  +String* imagePath
+  +Widget* build()
+}
+
+"asthma_management::views::profile2::profile2View.dart::Profile2ViewDesktop" o-- "asthma_management::views::profile2::profile2ViewModel.dart::Profile2ViewModel"
+
+class "asthma_management::views::profile2::profile2View.dart::Profile2ViewMobile" {
+  +Profile2ViewModel* viewModel
+  +String* country
+  +DateTime* dob
+  +String* gender
+  +String* imagePath
+  +String* name
+  +String* fullname
+  +Future<void>* getName()
+  +Widget* build()
+}
+
+"asthma_management::views::profile2::profile2View.dart::Profile2ViewMobile" o-- "asthma_management::views::profile2::profile2ViewModel.dart::Profile2ViewModel"
+
+class "asthma_management::views::profile2::profile2View.dart::Profile2ViewTablet" {
+  +Profile2ViewModel* viewModel
+  +String* country
+  +DateTime* dob
+  +String* gender
+  +String* imagePath
+  +Widget* build()
+}
+
+"asthma_management::views::profile2::profile2View.dart::Profile2ViewTablet" o-- "asthma_management::views::profile2::profile2ViewModel.dart::Profile2ViewModel"
+
+class "asthma_management::views::profile2::profile2ViewModel.dart::Profile2ViewModel" {
+  -int* _number
+  -List<bool*>* _trigger
+  -List<bool*>* _symptoms
+  -List<String*>* _triggerNames
+  -List<String*>* _symptomNames
+  -List<String*>* _phone
+  -String* _name
+  -ButtonStates* _buttonState
+  +int* number
+  +List<String*>* phone
+  +List<bool*>* trigger
+  +List<String*>* triggerNames
+  +List<bool*>* symptoms
+  +List<String*>* symptomNames
+  +String* name
+  +ButtonStates* buttonStates
+  +void setState()
+  +void addTrigger()
+  +void removeTrigger()
+  +Future<void>* getName()
+  +void addSymptoms()
+  +void removeSymptoms()
+  +void addNumber()
+  +void setBool()
+  +void setSymptomBool()
+  +void increment()
+  +void decrement()
+}
+
+"asthma_management::views::profile2::profile2ViewModel.dart::Profile2ViewModel" o-- "asthma_management::views::login::loginViewModel.dart::ButtonStates"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "asthma_management::views::profile2::profile2ViewModel.dart::Profile2ViewModel"
+
+class "asthma_management::views::emergency::addNumber.dart::AddEmergencyNumber" {
+  +_AddEmergencyNumberState* createState()
+}
+
+class "asthma_management::views::emergency::addNumber.dart::_AddEmergencyNumberState" {
+  -TextEditingController* _nameController
+  -TextEditingController* _numberController
+  -TextEditingController* _relationController
+  +GlobalKey<FormState*>* formKey
+  +Widget* build()
+}
+
+"asthma_management::views::emergency::addNumber.dart::_AddEmergencyNumberState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::emergency::addNumber.dart::_AddEmergencyNumberState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::emergency::addNumber.dart::SuccessDialog" {
+  +Widget* build()
+}
+
+class "asthma_management::views::emergency::emergencyContacts.dart::EmergencyContacts" {
+  +_EmergencyContactsState* createState()
+}
+
+class "asthma_management::views::emergency::emergencyContacts.dart::_EmergencyContactsState" {
+  +Widget* build()
+  -Future<void>* _sendSMS()
+}
+
+class "asthma_management::views::emergency::emergencyContacts.dart::SentMessageDialog" {
+  +String* recipientName
+  +Widget* build()
+}
+
+class "asthma_management::views::emergency::emergencyPopUp.dart::EmergencyPopUp" {
+  +Widget* build()
+}
+
+class "asthma_management::views::welcome::welcome.dart::Welcome" {
+  +GlobalKey<FormState*>* formKey
+  +Widget* build()
+}
+
+"asthma_management::views::welcome::welcome.dart::Welcome" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::profile::profile.dart::Profile" {
+  +Widget* build()
+}
+
+class "asthma_management::views::profile::editProfile2.dart::EditProfile2" {
+  +String* country
+  +DateTime* dob
+  +String* username
+  +String* contacts
+  +File* image
+  +String* gender
+  +Widget* build()
+}
+
+"asthma_management::views::profile::editProfile2.dart::EditProfile2" o-- "dart::io::File"
+
+class "asthma_management::views::profile::test.dart::Raven" {
+  +Widget* build()
+}
+
+class "asthma_management::views::profile::test.dart::Cards" {
+  +Widget* build()
+}
+
+class "asthma_management::views::profile::test.dart::Cards1" {
+  +Widget* build()
+}
+
+class "asthma_management::views::profile::editProfile.dart::EditProfile" {
+  +_EditProfileState* createState()
+}
+
+class "asthma_management::views::profile::editProfile.dart::_EditProfileState" {
+  -String* _currentSelectedValue
+  +DateTime* initialDate
+  +String* countryName
+  +String* text
+  +TextEditingController* nameController
+  +String* name
+  -File* _image
+  +ImagePicker* picker
+  +String* imagePath
+  -String* _imagePath
+  -List<String*>* _gender
+  +void initState()
+  +Future<void>* getImage()
+  +Widget* build()
+  -void _showImageOptions()
+  +dynamic pickImage()
+  +dynamic pickGalleryImage()
+}
+
+"asthma_management::views::profile::editProfile.dart::_EditProfileState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::profile::editProfile.dart::_EditProfileState" o-- "dart::io::File"
+"asthma_management::views::profile::editProfile.dart::_EditProfileState" o-- "image_picker::image_picker.dart::ImagePicker"
+
+class "asthma_management::views::splash_screen::splash_screen.dart::SplashScreen" {
+  +_SplashScreenState* createState()
+}
+
+class "asthma_management::views::splash_screen::splash_screen.dart::_SplashScreenState" {
+  +void initState()
+  +dynamic startTimer()
+  +Widget* build()
+}
+
+class "asthma_management::views::diary::diarylog.dart::DiaryLogScreen" {
+  +_DiaryLogScreenState* createState()
+}
+
+class "asthma_management::views::diary::diarylog.dart::_DiaryLogScreenState" {
+  -DateTime* _selectedDateTime
+  +TextEditingController* title
+  +TextEditingController* trigger
+  +TextEditingController* more
+  +TextEditingController* symptoms
+  +GlobalKey<FormState*>* formKey
+  +int* tappedIndex
+  -String* _currentTime
+  -Future<void>* _show()
+  +dynamic formatDate()
+  +Widget* build()
+  -void _showDialog()
+  +void onWhenChange()
+}
+
+"asthma_management::views::diary::diarylog.dart::_DiaryLogScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::diary::diarylog.dart::_DiaryLogScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::diary::diarylog.dart::Types" {
+  +String* name
+  +int* id
+}
+
+class "asthma_management::views::diary::diary.dart::DiaryScreen" {
+  +_DiaryScreenState* createState()
+}
+
+class "asthma_management::views::diary::diary.dart::_DiaryScreenState" {
+  +int* tappedIndex
+  +String* user
+  +Types* selectedTime
+  +List<dynamic>* types
+  +bool* isSwitched
+  +void initState()
+  +dynamic formatDate()
+  +Widget* build()
+}
+
+"asthma_management::views::diary::diary.dart::_DiaryScreenState" o-- "asthma_management::views::diary::diary.dart::Types"
+
+class "asthma_management::views::diary::diary.dart::Types" {
+  +String* name
+  +int* id
+}
+
+class "asthma_management::views::profile1::profile1.dart::ProfilePage1" {
+  +_ProfilePage1State* createState()
+}
+
+class "asthma_management::views::profile1::profile1.dart::_ProfilePage1State" {
+  +Color* color
+  -String* _currentSelectedValue
+  +DateTime* initialDate
+  +String* countryName
+  +String* text
+  +String* name
+  -File* _image
+  +ImagePicker* picker
+  +String* imagePath
+  +void initState()
+  +Future<void>* getName()
+  +Widget* build()
+  -void _showImageOptions()
+  +dynamic pickImage()
+  +dynamic pickGalleryImage()
+}
+
+"asthma_management::views::profile1::profile1.dart::_ProfilePage1State" o-- "dart::ui::Color"
+"asthma_management::views::profile1::profile1.dart::_ProfilePage1State" o-- "dart::io::File"
+"asthma_management::views::profile1::profile1.dart::_ProfilePage1State" o-- "image_picker::image_picker.dart::ImagePicker"
+
+class "asthma_management::views::login::login_view.dart::LoginView" {
+  +Widget* build()
+}
+
+class "asthma_management::views::login::login_view.dart::LogInMobile" {
+  +LoginViewModel* loginViewModel
+  +_LogInMobileState* createState()
+}
+
+"asthma_management::views::login::login_view.dart::LogInMobile" o-- "asthma_management::views::login::loginViewModel.dart::LoginViewModel"
+
+class "asthma_management::views::login::login_view.dart::_LogInMobileState" {
+  +bool* obscure
+  +TextEditingController* emailController
+  +TextEditingController* passwordController
+  -GlobalKey<FormState*>* _formKey
+  +bool* autovalidate
+  +void obscurePassword()
+  +Widget* build()
+}
+
+"asthma_management::views::login::login_view.dart::_LogInMobileState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::login::login_view.dart::_LogInMobileState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::login::login_view.dart::LogInTablet" {
+  +LoginViewModel* loginViewModel
+  +_LogInTabletState* createState()
+}
+
+"asthma_management::views::login::login_view.dart::LogInTablet" o-- "asthma_management::views::login::loginViewModel.dart::LoginViewModel"
+
+class "asthma_management::views::login::login_view.dart::_LogInTabletState" {
+  +bool* obscure
+  +TextEditingController* emailController
+  +TextEditingController* passwordController
+  -GlobalKey<FormState*>* _formKey
+  +bool* autovalidate
+  +void obscurePassword()
+  +Widget* build()
+}
+
+"asthma_management::views::login::login_view.dart::_LogInTabletState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::login::login_view.dart::_LogInTabletState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::login::login_view.dart::LogInDesktop" {
+  +LoginViewModel* loginViewModel
+  +_LogInDesktopState* createState()
+}
+
+"asthma_management::views::login::login_view.dart::LogInDesktop" o-- "asthma_management::views::login::loginViewModel.dart::LoginViewModel"
+
+class "asthma_management::views::login::login_view.dart::_LogInDesktopState" {
+  +bool* obscure
+  +TextEditingController* emailController
+  +TextEditingController* passwordController
+  -GlobalKey<FormState*>* _formKey
+  +bool* autovalidate
+  +void obscurePassword()
+  +Widget* build()
+}
+
+"asthma_management::views::login::login_view.dart::_LogInDesktopState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::views::login::login_view.dart::_LogInDesktopState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "asthma_management::views::login::validators.dart::Validators" {
+  {static} +String* emailValidator()
+  {static} +String* emptyValidator()
+  {static} +String* passwordValidator()
+}
+
+class "asthma_management::views::login::loginViewModel.dart::ButtonStates" {
+  +int* index
+  {static} +List<ButtonStates*>* values
+  {static} +ButtonStates* Idle
+  {static} +ButtonStates* Pressed
+}
+
+"asthma_management::views::login::loginViewModel.dart::ButtonStates" o-- "asthma_management::views::login::loginViewModel.dart::ButtonStates"
+
+class "asthma_management::views::login::loginViewModel.dart::LoginViewModel" {
+  -ButtonStates* _buttonState
+  +ButtonStates* buttonStates
+  +void setState()
+  +Future<String*>* login()
+}
+
+"asthma_management::views::login::loginViewModel.dart::LoginViewModel" o-- "asthma_management::views::login::loginViewModel.dart::ButtonStates"
+
+class "asthma_management::views::reminders::remiders.dart::Reminders" {
+  +_RemindersState* createState()
+}
+
+class "asthma_management::views::reminders::remiders.dart::_RemindersState" {
+  +bool* isSwitched
+  +bool* isSnoozeSwitched
+  -String* _dateTime
+  +List<Reminder*>* itemList
+  -String* _initialRepeatValue
+  -List<String*>* _repeat
+  -TextEditingController* _titleController
+  -TextEditingController* _notesController
+  +void initState()
+  +Future<dynamic>* onSelectNotification()
+  +Future<dynamic>* onDidReceiveLocalNotification()
+  +void dispose()
+  +Widget* build()
+  -dynamic _showAddReminderDialog()
+  -void _showSuccessDialog()
+}
+
+"asthma_management::views::reminders::remiders.dart::_RemindersState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "asthma_management::views::reminders::remiders.dart::ReminderListView" {
+  +String* title
+  +String* text
+  +dynamic time
+  +int* index
+  +String* frequency
+  +String* notes
+  +bool* taken
+  +_ReminderListViewState* createState()
+}
+
+class "asthma_management::views::reminders::remiders.dart::_ReminderListViewState" {
+  +bool* isSwitched
+  +dynamic preferences
+  +bool* mainValue
+  +void initState()
+  +Future<bool*>* getSwtichedValue()
+  +Future<bool*>* assignSwtichedValue()
+  +Widget* build()
+  +Future<void>* showNotification()
+  +Future<void>* showWeeklyAtDayTime()
+}
+
+class "asthma_management::views::peakflow::peakflow.dart::PeakFlow" {
+  +_PeakFlowState* createState()
+}
+
+class "asthma_management::views::peakflow::peakflow.dart::_PeakFlowState" {
+  +String* text
+  +Widget* build()
+  -void _awaitReturnValueFromSecondScreen()
+}
+
+class "asthma_management::views::peakflow::test.dart::LineChartSample2" {
+  +State<StatefulWidget*>* createState()
+}
+
+class "asthma_management::views::peakflow::test.dart::LineChartSample2State" {
+  +bool* isShowingMainData
+  +void initState()
+  +Widget* build()
+  +LineChartData* sampleData1()
+  +List<LineChartBarData*>* linesBarData1()
+  +LineChartData* sampleData2()
+  +List<LineChartBarData*>* linesBarData2()
+}
+
+class "asthma_management::views::bottombar::bottombar.dart::MyHomePage" {
+  +_MyHomePageState* createState()
+}
+
+class "asthma_management::views::bottombar::bottombar.dart::_MyHomePageState" {
+  -PageController* _pageController
+  -int* _page
+  +void initState()
+  -void _onPageChanged()
+  -void _bottomTapped()
+  -Future<bool*>* _onWillPop()
+  +Widget* build()
+  -BottomNavigationBarItem* _bottomNavigationBarItem()
+}
+
+"asthma_management::views::bottombar::bottombar.dart::_MyHomePageState" o-- "flutter::src::widgets::page_view.dart::PageController"
+
+class "asthma_management::views::onboarding::onboarding_view.dart::OnBoardingPage" {
+  +_OnBoardingPageState* createState()
+}
+
+class "asthma_management::views::onboarding::onboarding_view.dart::_OnBoardingPageState" {
+  +GlobalKey<IntroductionScreenState*>* introKey
+  -Future<void>* _onIntroEnd()
+  -Widget* _buildFullscrenImage()
+  -Widget* _buildImage()
+  +Widget* build()
+}
+
+"asthma_management::views::onboarding::onboarding_view.dart::_OnBoardingPageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<IntroductionScreenState>"
+
+class "asthma_management::widgets::firstaid::fourth.dart::FourthInfo" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::firstaid::emergency.dart::EmergencyInfo" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::firstaid::second.dart::SecondInfo" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::firstaid::first.dart::FirstInfo" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::firstaid::third.dart::ThirdInfo" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::actionPlan::greenButton.dart::GreenButton" {
+  +ActionPlanViewModel* viewModel
+  +Widget* build()
+}
+
+"asthma_management::widgets::actionPlan::greenButton.dart::GreenButton" o-- "asthma_management::views::actionPlan::actionPlanViewModel.dart::ActionPlanViewModel"
+
+class "asthma_management::widgets::actionPlan::redButton.dart::RedButton" {
+  +ActionPlanViewModel* viewModel
+  +Widget* build()
+}
+
+"asthma_management::widgets::actionPlan::redButton.dart::RedButton" o-- "asthma_management::views::actionPlan::actionPlanViewModel.dart::ActionPlanViewModel"
+
+class "asthma_management::widgets::actionPlan::yellow.dart::YellowAction" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::actionPlan::green.dart::GreenAction" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::actionPlan::yellowButton.dart::YellowButton" {
+  +ActionPlanViewModel* viewModel
+  +Widget* build()
+}
+
+"asthma_management::widgets::actionPlan::yellowButton.dart::YellowButton" o-- "asthma_management::views::actionPlan::actionPlanViewModel.dart::ActionPlanViewModel"
+
+class "asthma_management::widgets::actionPlan::red.dart::RedAction" {
+  +Widget* build()
+}
+
+class "asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" {
+  +String* text
+  +Widget* icon
+  +bool* obscure
+  +TextEditingController* controller
+  +void Function(String*)* onChanged
+  +SignupViewModel* viewModel
+  +String* Function(String*)* validator
+  +TextInputType* keyboardType
+  +_SignupTextFieldState* createState()
+}
+
+"asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" o-- "flutter::src::widgets::framework.dart::Widget"
+"asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" o-- "null::void Function(String)"
+"asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" o-- "asthma_management::views::signup::signupViewModel.dart::SignupViewModel"
+"asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" o-- "null::String Function(String)"
+"asthma_management::widgets::signup_textfield::textfield.dart::SignupTextField" o-- "flutter::src::services::text_input.dart::TextInputType"
+
+class "asthma_management::widgets::signup_textfield::textfield.dart::_SignupTextFieldState" {
+  +bool* visible
+  +bool* obscure
+  +Widget* build()
+}
+
+class "asthma_management::widgets::login::texts.dart::Texts" {
+  +String* text
+  +TextStyle* textStyle
+  +TextAlign* textAlign
+  +Widget* build()
+}
+
+"asthma_management::widgets::login::texts.dart::Texts" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"asthma_management::widgets::login::texts.dart::Texts" o-- "dart::ui::TextAlign"
+
+class "asthma_management::widgets::login::texts.dart::RichTexts" {
+  +String* text
+  +String* extraText
+  +TextStyle* textStyle
+  +TapGestureRecognizer* tapGestureRecognizer
+  +TextStyle* extraTextStyle
+  +TextAlign* textAlign
+  +Widget* build()
+}
+
+"asthma_management::widgets::login::texts.dart::RichTexts" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"asthma_management::widgets::login::texts.dart::RichTexts" o-- "flutter::src::gestures::tap.dart::TapGestureRecognizer"
+"asthma_management::widgets::login::texts.dart::RichTexts" o-- "dart::ui::TextAlign"
+
+class "asthma_management::widgets::login::button.dart::Buttons" {
+  +Function* onPressed
+  +String* text
+  +Widget* build()
+}
+
+class "asthma_management::widgets::login::textfiels.dart::TextFields" {
+  +String* labelText
+  +TextEditingController* controller
+  +TextInputType* inputType
+  +LoginViewModel* loginViewModel
+  +Widget* suffixIcon
+  +String* Function(String*)* validator
+  +bool* obscure
+  +Key* key
+  +Widget* build()
+}
+
+"asthma_management::widgets::login::textfiels.dart::TextFields" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"asthma_management::widgets::login::textfiels.dart::TextFields" o-- "flutter::src::services::text_input.dart::TextInputType"
+"asthma_management::widgets::login::textfiels.dart::TextFields" o-- "asthma_management::views::login::loginViewModel.dart::LoginViewModel"
+"asthma_management::widgets::login::textfiels.dart::TextFields" o-- "flutter::src::widgets::framework.dart::Widget"
+"asthma_management::widgets::login::textfiels.dart::TextFields" o-- "null::String Function(String)"
+"asthma_management::widgets::login::textfiels.dart::TextFields" o-- "flutter::src::foundation::key.dart::Key"
+
+
+@enduml
